@@ -8,7 +8,7 @@ Jupyter notebook ([boston_train.ipynb](/boston_train.ipynb)) downloads Boston Da
 
 ##### Inference
 
-Inference script [boston_inference.py](boston_inference.py) is a FastAPI app with one endpoint that expects POST requests with JSON payload (see Sending Requests section). After request is received, it is converted to XGBRegressor input format for inference. Response contains single number which is a predicted house price based on input features.
+Inference script [boston_inference.py](boston_inference.py) is a FastAPI app with single endpoint which expects POST requests with JSON payload (see Sending Requests section). After request is received, data is then converted to XGBRegressor input format and used for inference. Response contains single number which is a predicted house price based on input features.
 
 ### Building & Running
 
