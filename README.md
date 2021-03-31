@@ -2,6 +2,14 @@
 
 Simple application for testing productization/deployment of ML apps. 
 
+##### Training
+
+Jupyter notebook ([boston_train.ipynb](/boston_train.ipynb)) downloads Boston Dataset and performs a quick training using XGBoostRegressor model. Training parameters as well as train/valid/test split were chosen arbitrarly and don't guarantee good results, but that's not the point here. At the end, notebook saves the model to [xgbregressor_boston.json](xgbregressor_boston.json) file which can be then loaded back for inference.
+
+##### Inference
+
+Inference script [boston_inference.py](boston_inference.py) is a FastAPI app with one endpoint that expects POST requests with JSON payload (see Sending Requests section). After request is received, it is converted to XGBRegressor input format for inference. Response contains single number which is a predicted house price based on input features.
+
 ### Building & Running
 
 ```
