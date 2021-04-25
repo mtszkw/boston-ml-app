@@ -1,12 +1,17 @@
-FROM python:3.8
+FROM python:3.6.9-slim
 
-RUN pip install pipenv
-COPY Pipfile* /tmp/
+WORKDIR /boston-ml-app
 
-RUN cd /tmp && pipenv lock --keep-outdated --requirements > requirements.txt
-RUN pip install -r /tmp/requirements.txt
+COPY Pipfile Pipfile.lock ./
 
-WORKDIR /tmp/myapp/
-COPY . .
+RUN pip install pipenv && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends gcc python3-dev libssl-dev && \
+    pipenv install --deploy --system && \
+    apt-get remove -y gcc python3-dev libssl-dev && \
+    apt-get autoremove -y && \
+    pip uninstall pipenv -y
+
+COPY boston_inference.py xgbregressor_boston.json .
 
 CMD ["uvicorn", "boston_inference:app", "--host", "0.0.0.0", "--port", "8000"]

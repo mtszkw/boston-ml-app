@@ -1,6 +1,5 @@
 import numpy as np
 from xgboost import XGBRegressor
-from sklearn.metrics import mean_squared_error
 
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
