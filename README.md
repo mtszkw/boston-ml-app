@@ -46,5 +46,4 @@ curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"crim": 6.71772, "zn": 0.0, "indus": 18.1, "chas": 0.0, "nox": 0.713, "rm": 6.749, "age": 92.6, "dis": 2.323, "rad": 24.0, "tax": 666.0, "ptratio": 20.2, "b": 0.32, "lstat": 17.44}' \
   http://0.0.0.0:8000/predict
-
 ```
