@@ -13,8 +13,8 @@ Inference script [boston_inference.py](boston_inference.py) is a FastAPI app wit
 ### Building & Running
 
 ```
-docker build --no-cache -t ml_app_template .
-docker run --rm -p 8000:8000 ml_app_template
+docker pull mtszkw/boston-ml-app:v2
+docker run -p 8000:8000 mtszkw/boston-ml-app:v2
 ```
 
 ### Sending Requests
@@ -39,9 +39,12 @@ When docker container is running, endpoint should be available on http://0.0.0.0
 }
 ```
 
+CURL request:
+
 ```
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"crim": 6.71772, "zn": 0.0, "indus": 18.1, "chas": 0.0, "nox": 0.713, "rm": 6.749, "age": 92.6, "dis": 2.323, "rad": 24.0, "tax": 666.0, "ptratio": 20.2, "b": 0.32, "lstat": 17.44}' \
   http://0.0.0.0:8000/predict
+
 ```
